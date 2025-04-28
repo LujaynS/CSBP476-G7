@@ -708,6 +708,9 @@ void aggressiveRight() {
   setMotors(aggressiveTurnSpeed, -aggressiveTurnSpeed);
 }
 //*************************************************************************
+9- Conclusion
+We successfully made the robot follow the line and finish in 37 seconds. The main code struggled with the white line, but a separate test code worked perfectly—stopping the robot at the white line as intended. Future improvements should focus on merging both codes for better performance.  
+
 
 
 
