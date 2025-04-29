@@ -9,14 +9,14 @@ Amna Alameri 202015488
 Sumaya Alketbi 202200100
 Submitted to Dr. Munkhjargal Gochoo
 
-1. Objective
+1. OBJECTIVE
 This report outlines the process and results of the Line-Following Robot
 Competition. The challenge involved building and programming a robot that
 could follow a designated path from a start area to an end area and stop at the
 finish. The robot was required to complete five milestones within a three-
 minute time limit.
 
-2. Introduction
+2. INTRODUCTION
 Because of this, it is difficult to settle on one definition for any robot. In pop
 culture, robots are often pictured as being super-intelligent, autonomous
 machines. However, not all robots are fully autonomous. Many robots are
@@ -33,14 +33,14 @@ path traced out for it, which is mostly a dark line on a light surface. The Line
 Follower Robot uses infrared (IR) sensors to detect the path, keeping the robot
 on course following prewritten logic uploaded into the microcontroller.
 
-3. Robot Development Process
+3. ROBOT DEVELOPMENT PROCESS
 Building a line-following robot involves several essential steps:
 • Designing the mechanical structure of the robot
 • Programming the robot's movement logic using Arduino
 • Wiring and connecting sensors and motor drivers
 • Testing and calibrating the sensors for accurate line detection
 
-4. Our Robot: 4WD Keyestudio Bluetooth Multi-Functional Car
+4. OUR ROBOT: 4WD Keyestudio Bluetooth Multi-Functional Car
 For this competition, we used the 4WD Keyestudio Bluetooth Multi-Functional
 Car. This robot kit is based on an ATmega-328 microcontroller (Arduino-
 compatible) and supports various features, including:
@@ -56,7 +56,7 @@ The educational kit provides a good balance between education and practical
 application, enabling us to understand the core concepts of electronics,
 programming, and robotics better.
 
-5. Line Following Sensor System
+5. LINE FOLLOWING SENSOR SYSTEM
 Three IR line-tracking sensors are fitted on the underside of the robot's front
 chassis, which will emit infrared light and will rely on the surface reflection to
 detect obstacles:
@@ -74,7 +74,7 @@ The logic is straightforward:
 This setup is ideal for simple and efficient line-following behavior.
 ![image](https://github.com/user-attachments/assets/8716db9a-e796-43e9-a848-fa5388301ad9)
 
-6. Cost of the Robot
+6. COST OF THE ROBOT
 Approximately 285 AED was the price paid for the 4WD Keyestudio Bluetooth
 Multi-Functional Car Kit, which was purchased through Amazon. The kit
 consists of
@@ -91,8 +91,57 @@ Considering the price, it becomes a viable
 option for beginners and students who want to learn the basic principles of
 robotics and embedded systems.
 
-7. Flowchart
-8. Code
+7. FLOWCHART
+![WhatsApp Image 2025-04-29 at 07 19 31_dcc67fd9](https://github.com/user-attachments/assets/e2038017-43c6-405d-81ac-7a3cadbc6ed8)
+Flowchart Explanation (Step-by-Step)
+	1.	Start: The robot starts its program.
+	2.	Setup (Pin Modes + Matrix Display):
+	•	It sets up input/output pins.
+	•	Initializes any displays (e.g., LED matrix).
+	3.	Loop Start: Starts the repeated loop where the robot continuously checks and responds.
+	4.	Read Line Sensors (L, M, R):
+	•	The robot reads from 3 sensors: Left, Middle, Right.
+	5.	Is Line Detected?
+	•	If Yes:
+	•	Follow Line: It continues following the line as normal.
+	•	If No:
+	•	It sees how long the line has been absent.
+6. Lost Time < 1 sec?
+	• If Yes:
+	• Search Last Dir: It turns towards the last known direction of the line in the hope of picking it up again.
+	• If No:
+	• Aggressive Turn: It takes a tighter or larger turn to attempt to find the line again.
+7. Then, the cycle returns to the loop start.
+![WhatsApp Image 2025-04-29 at 07 19 31_c8c4db8c](https://github.com/user-attachments/assets/61777ede-ed20-43aa-875f-c2030de0d700)
+Line-Following + Obstacle Avoidance Flowchart
+1. Start:
+• The robot boots.
+2. Setup (Pin Modes + Matrix Display):
+• Pins and visual display setup initialization (e.g., LED matrix).
+3. Loop Start:
+• Starts the infinite loop for constant observation and action.
+4. Check Distance Sensor:
+• Uses an ultrasonic sensor (or similar) to monitor if something is ahead.
+5. Is Obstacle Detected?
+• Yes:
+• Stop Moving: Robot halts to avoid collision.
+• No:
+• Goes on to Tracking (i.e., follow the line).
+6. Read Line Sensors (L, M, R):
+• Reads 3 line sensors input.
+7. Is Line Detected?
+• Yes:
+• PID Control Motors: Tracks line smoothly using PID algorithm.
+• No:
+• Sees how long the line has been gone.
+8. Lost Time < 1 sec?
+• Yes:
+• Search Left/Right: Attempts to locate the line for a short time using last known direction.
+• No:
+• Aggressive Search: Makes a broader turn or larger motion to re-establish line location.
+9. Goes back to loop beginning and repeats.
+
+8. CODE
 //*************************************************************************
 /*
  Keyestudio 4WD BT Car
@@ -708,7 +757,7 @@ void aggressiveRight() {
   setMotors(aggressiveTurnSpeed, -aggressiveTurnSpeed);
 }
 //*************************************************************************
-9- Conclusion
+9.CONCLUSION
 We successfully made the robot follow the line and finish in 37 seconds. The main code struggled with the white line, but a separate test code worked perfectly—stopping the robot at the white line as intended. Future improvements should focus on merging both codes for better performance.  
 
 
