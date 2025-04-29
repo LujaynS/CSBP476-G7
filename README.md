@@ -94,52 +94,51 @@ robotics and embedded systems.
 7. FLOWCHART
 ![WhatsApp Image 2025-04-29 at 07 19 31_dcc67fd9](https://github.com/user-attachments/assets/e2038017-43c6-405d-81ac-7a3cadbc6ed8)
 Flowchart Explanation (Step-by-Step)
-	1.	Start: The robot starts its program.
-	2.	Setup (Pin Modes + Matrix Display):
+Start: The robot starts its program.
+Setup (Pin Modes + Matrix Display):
 	•	It sets up input/output pins.
 	•	Initializes any displays (e.g., LED matrix).
-	3.	Loop Start: Starts the repeated loop where the robot continuously checks and responds.
-	4.	Read Line Sensors (L, M, R):
+Loop Start: Starts the repeated loop where the robot continuously checks and responds.
+Read Line Sensors (L, M, R):
 	•	The robot reads from 3 sensors: Left, Middle, Right.
-	5.	Is Line Detected?
+Is Line Detected?
 	•	If Yes:
 	•	Follow Line: It continues following the line as normal.
 	•	If No:
 	•	It sees how long the line has been absent.
-6. Lost Time < 1 sec?
+Lost Time < 1 sec?
 	• If Yes:
 	• Search Last Dir: It turns towards the last known direction of the line in the hope of picking it up again.
 	• If No:
-	• Aggressive Turn: It takes a tighter or larger turn to attempt to find the line again.
-7. Then, the cycle returns to the loop start.
+	• Aggressive Turn: It takes a tighter or larger turn to attempt to find the line again. Then, the cycle returns to the loop start.
 ![WhatsApp Image 2025-04-29 at 07 19 31_c8c4db8c](https://github.com/user-attachments/assets/61777ede-ed20-43aa-875f-c2030de0d700)
 Line-Following + Obstacle Avoidance Flowchart
-1. Start:
+Start:
 • The robot boots.
-2. Setup (Pin Modes + Matrix Display):
+Setup (Pin Modes + Matrix Display):
 • Pins and visual display setup initialization (e.g., LED matrix).
-3. Loop Start:
+Loop Start:
 • Starts the infinite loop for constant observation and action.
-4. Check Distance Sensor:
+Check Distance Sensor:
 • Uses an ultrasonic sensor (or similar) to monitor if something is ahead.
-5. Is Obstacle Detected?
+Is Obstacle Detected?
 • Yes:
 • Stop Moving: Robot halts to avoid collision.
 • No:
 • Goes on to Tracking (i.e., follow the line).
-6. Read Line Sensors (L, M, R):
+Read Line Sensors (L, M, R):
 • Reads 3 line sensors input.
-7. Is Line Detected?
+Is Line Detected?
 • Yes:
 • PID Control Motors: Tracks line smoothly using PID algorithm.
 • No:
 • Sees how long the line has been gone.
-8. Lost Time < 1 sec?
+Lost Time < 1 sec?
 • Yes:
 • Search Left/Right: Attempts to locate the line for a short time using last known direction.
 • No:
 • Aggressive Search: Makes a broader turn or larger motion to re-establish line location.
-9. Goes back to loop beginning and repeats.
+Goes back to loop beginning and repeats.
 
 8. CODE
 //*************************************************************************
